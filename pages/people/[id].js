@@ -8,7 +8,6 @@ const fetchFilms = async (urls) =>
   Promise.all(urls.map(axios.get))
     .then(results => results.map(res => res.data))
 
-
 const Person = ({ data, id }) => {
   const [state, setState] = useState({
     fetched: false,
@@ -34,7 +33,7 @@ const Person = ({ data, id }) => {
   })
 
   return (
-    <div className="page">
+    <div className='page'>
       <Head>
         <title>{ data.name }</title>
       </Head>
@@ -62,8 +61,8 @@ const Person = ({ data, id }) => {
 
 Person.getInitialProps = async ({ query }) => {
   const { id } = query
-  if (!id) return { data: {} , id: null }
-  
+  if (!id) return { data: {}, id: null }
+
   const { data } = await axios.get(`${baseURL}/people/${id}`)
 
   return {

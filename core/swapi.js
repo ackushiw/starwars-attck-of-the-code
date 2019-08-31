@@ -1,19 +1,19 @@
 export const baseURL = 'https://swapi.co/api'
 
 export const characters = [{
-  "name": "Luke Skywalker",
-  "url": "https://swapi.co/api/people/1/"
+  name: 'Luke Skywalker',
+  url: 'https://swapi.co/api/people/1/'
 }, {
-  "name": "Darth Vader",
-  "url": "https://swapi.co/api/people/4/"
+  name: 'Darth Vader',
+  url: 'https://swapi.co/api/people/4/'
 }, {
-  "name": "Obi-wan Kenobi",
+  name: 'Obi-wan Kenobi',
   // Change unknown id to be 10 to fetch
-  "url": "https://swapi.co/api/people/10/"
+  url: 'https://swapi.co/api/people/10/'
 }, {
-  "name": "R2-D2",
+  name: 'R2-D2',
   // Change 2 to 3 for correct result
-  "url": "https://swapi.co/api/people/3/"
+  url: 'https://swapi.co/api/people/3/'
 }]
 
 const charactersById = {
@@ -51,7 +51,7 @@ const charactersById = {
   }
 }
 
-export function getCharacterUi(url) {
+export function getCharacterUi (url) {
   const [id] = url.match(/\d+/)
 
   return {

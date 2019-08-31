@@ -11,10 +11,10 @@ const CharacterCard = ({ align, color, fontColor, id, image, name, url }) => {
     color: fontColor
   }
   return (
-    <div className="character-card">
-      <Link as={url.replace(swapi.baseURL, '')} href="/people/[id]">
-        <a className="card" style={cardStyle}>
-          <div className="card-content">
+    <div className='character-card'>
+      <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
+        <a className='card' style={cardStyle}>
+          <div className='card-content'>
             <h1>{ name }</h1>
           </div>
         </a>

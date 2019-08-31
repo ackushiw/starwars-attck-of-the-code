@@ -7,7 +7,6 @@ import { characters, getCharacterUi } from '../core/swapi'
 class AppShell extends App {
   render () {
     const { Component, pageProps, router } = this.props
-    const { query } = router
     const isHome = router.pathname === '/'
 
     const characterCards = characters.map(character => ({
@@ -20,7 +19,7 @@ class AppShell extends App {
       <div>
         <Nav characters={characterCards} isHome={isHome} />
         <main>
-          <Component { ...pageProps } />
+          <Component {...pageProps} />
         </main>
         <style jsx global>{`
           body { 

@@ -3,12 +3,12 @@ import Link from 'next/link'
 import CharacterCard from './CharacterCard'
 
 const Nav = ({ characters, isHome }) => (
-  <nav className={ isHome ? 'expand' : 'top' }>
-    
-    <div className={ isHome ? 'top-bar' : 'top-bar show' }>
+  <nav className={isHome ? 'expand' : 'top'}>
+
+    <div className={isHome ? 'top-bar' : 'top-bar show'}>
       <ul>
         <li>
-          <Link href="/">
+          <Link href='/'>
             <a>
               Home
             </a>
@@ -16,20 +16,19 @@ const Nav = ({ characters, isHome }) => (
         </li>
       </ul>
     </div>
-     
 
-    <div className={ isHome ? 'container home' : 'container page'}>
+    <div className={isHome ? 'container home' : 'container page'}>
       {
         characters.map(character =>
           <section
             className={
               isHome
                 ? 'home' : character.active
-                ? 'active' : 'hidden'
+                  ? 'active' : 'hidden'
             }
             key={character.id}
           >
-            <CharacterCard {...character }/>
+            <CharacterCard {...character} />
           </section>
         )
       }
