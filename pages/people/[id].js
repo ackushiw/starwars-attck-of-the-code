@@ -62,6 +62,8 @@ const Person = ({ data, id }) => {
 
 Person.getInitialProps = async ({ query }) => {
   const { id } = query
+  if (!id) return { data: {} , id: null }
+  
   const { data } = await axios.get(`${baseURL}/people/${id}`)
 
   return {
