@@ -53,6 +53,7 @@ const Nav = ({ characters, isHome }) => (
         align-self: stretch;
         display: block;
         height: 100%;
+        min-height: 56px;
         width: 100%;
       }
       .top-bar {
@@ -88,7 +89,7 @@ const Nav = ({ characters, isHome }) => (
         max-height: 100%;
       }
       nav.top {
-        max-height: 156px;
+        max-height: 112px;
       }
 
       section {
