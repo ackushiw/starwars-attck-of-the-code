@@ -39,8 +39,14 @@ const CharacterCard = ({ align, color, fontColor, id, image, name, url }) => {
             text-decoration: none;
           }
           h1 {
-            font-size: 2rem;
+            font-size: 1.2rem;
             margin: 0;
+          }
+
+          @media (min-width: 600px) {
+            h1 {
+              font-size: 2rem;
+            }
           }
         `}
       </style>

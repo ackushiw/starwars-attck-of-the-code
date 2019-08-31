@@ -39,8 +39,8 @@ const Nav = ({ characters, isHome }) => (
       .container {
         background: #000;
         display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         width: 100%;
         height: 100%;
         transition: all 300ms ease;
