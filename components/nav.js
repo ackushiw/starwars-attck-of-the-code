@@ -1,37 +1,81 @@
 import React from 'react'
 import Link from 'next/link'
+import CharacterCard from './CharacterCard'
 
-const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' }
-].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
-})
-
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-      </li>
-      {links.map(({ key, href, label }) => (
-        <li key={key}>
-          <a href={href}>{label}</a>
+const Nav = ({ characters, isHome }) => (
+  <nav className={ isHome ? 'expand' : 'top' }>
+    
+    <div className={ isHome ? 'top-bar' : 'top-bar show' }>
+      <ul>
+        <li>
+          <Link href="/">
+            <a>
+              Home
+            </a>
+          </Link>
         </li>
-      ))}
-    </ul>
+      </ul>
+    </div>
+     
+
+    <div className={ isHome ? 'container home' : 'container page'}>
+      {
+        characters.map(character =>
+          <section
+            className={
+              isHome
+                ? 'home' : character.active
+                ? 'active' : 'hidden'
+            }
+            key={character.id}
+          >
+            <CharacterCard {...character }/>
+          </section>
+        )
+      }
+    </div>
 
     <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
+      .container {
+        background: #000;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        width: 100%;
+        height: 100%;
+        transition: all 300ms ease;
+      }
+      .container.page {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        transform: translateY(56px);
+      }
+      section {
+        align-self: stretch;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      .top-bar {
+        background: #000;
+        height: 56px;
+        position: fixed;
+        transition: transform 300ms ease;
+        transform: translateY(-56px);
+        width: 100%;
+        z-index: 100;
+      }
+      .top-bar.show {
+        transform: translateY(0);
       }
       nav {
-        text-align: center;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        position: fixed;
+        right: 0;
+        top: 0;
+        transition: max-height 300ms ease;
       }
       ul {
         display: flex;
@@ -40,15 +84,40 @@ const Nav = () => (
       nav > ul {
         padding: 4px 16px;
       }
+
+      nav.expand {
+        max-height: 100%;
+      }
+      nav.top {
+        max-height: 156px;
+      }
+
+      section {
+        transition: all 300ms ease;
+        opacity: 1;
+      }
+
+      section.hidden {
+        opacity: 0;
+        transform: translateY(-50vh);
+      }
+
+      section.active {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        z-index: 100;
+      }
+      
       li {
         display: flex;
         padding: 6px 8px;
       }
       a {
-        color: #067df7;
-        text-decoration: none;
+        color: #fff;
         font-size: 13px;
+        font-weight: 600;
       }
+
     `}</style>
   </nav>
 )
