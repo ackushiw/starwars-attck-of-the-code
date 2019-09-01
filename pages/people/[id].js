@@ -39,7 +39,7 @@ const Person = ({ data, id }) => {
           })
         )
     }
-  })
+  }, [data.films])
 
   return (
     <div className='page'>
