@@ -14,10 +14,10 @@ const nextConfig = {
   workboxOpts: {
     runtimeCaching: [
       {
-        urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
+        urlPattern: /api/,
+        handler: 'CacheFirst',
         options: {
-          cacheName: 'offlineCache',
+          cacheName: 'apiCache',
           expiration: {
             maxEntries: 200
           }
