@@ -118,6 +118,15 @@ const Nav = ({ characters, isHome }) => (
         font-weight: 600;
       }
 
+      @media (min-width: 600px) {
+        nav.top {
+          max-height: 128px;
+        }
+        section {
+          min-height: 72px;
+        }
+      }
+
     `}</style>
   </nav>
 )

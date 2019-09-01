@@ -15,7 +15,6 @@ const fetchFilms = async (urls) =>
       .sort((a, b) => a.timestamp - b.timestamp)
     )
 
-
 const Person = ({ data, id }) => {
   const [state, setState] = useState({
     fetched: false,
@@ -47,7 +46,7 @@ const Person = ({ data, id }) => {
       </Head>
       <h2>Movies</h2>
       { state.fetched &&
-        <section className="grid-container">
+        <section className='grid-container'>
           {
             films.map(film => <FilmCard data={film} key={film.url} />)
           }
@@ -73,6 +72,17 @@ const Person = ({ data, id }) => {
       @media (min-width: 600px) {
         .grid-container {
           grid-gap: 1rem;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .grid-container {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      @media (min-width: 960px) {
+        .grid-container {
           grid-template-columns: 1fr 1fr 1fr 1fr;
         }
       }

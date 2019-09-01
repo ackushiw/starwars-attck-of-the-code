@@ -2,38 +2,44 @@ import React from 'react'
 import Link from 'next/link'
 import swapi from '../core/swapi'
 
-const CharacterCard = ({ align, color, fontColor, id, image, name, url }) => {
+const CharacterCard = ({ active, align, color, fontColor, id, image, name, url }) => {
   const cardStyle = {
     backgroundColor: color,
+    color: fontColor,
+  }
+  const cardImageStyle = {
     backgroundImage: `url(/static/${image})`,
     backgroundPosition: `bottom ${align}`,
     backgroundSize: 'contain',
-    color: fontColor
   }
   return (
-    <div className='character-card'>
-      <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
-        <a className='card' style={cardStyle}>
-          <div className='card-content'>
-            <h1>{ name }</h1>
-          </div>
-        </a>
-      </Link>
-
-      <style jsx>{`
-          .character-card {
-            height: 100%;
-            position: relative;
-            width: 100%;
-          }
+    <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
+      <a className='card' style={cardStyle}>
+        <div className='card-image' style={cardImageStyle} />
+        <div className='card-content'>
+          <h1>{ name }</h1>
+        </div>
+        <style jsx>{`
           .card {
-            background-repeat: no-repeat;
             display: block;
             height: 100%;
+            overflow: hidden;
+            position: relative;
             width: 100%;
           }
           .card-content {
             padding: 1rem;
+            position: relative;
+          }
+          .card-image {
+            background-repeat: no-repeat;
+            bottom: 0;
+            height: 80%;
+            left: 1rem;
+            position: absolute;
+            right: 1rem;
+            transition: transform 100ms ease;
+            width: calc(100% - 2rem);
           }
           a {
             text-decoration: none;
@@ -49,8 +55,9 @@ const CharacterCard = ({ align, color, fontColor, id, image, name, url }) => {
             }
           }
         `}
-      </style>
-    </div>
+        </style>
+      </a>
+    </Link>
   )
 }
 

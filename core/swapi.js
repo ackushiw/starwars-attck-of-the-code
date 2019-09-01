@@ -19,7 +19,7 @@ export const characters = [{
 const charactersById = {
   1: {
     align: 'left',
-    color: '#0F0',
+    color: '#6BE044',
     fontColor: '#fff',
     image: 'luke.svg',
     name: 'Luke Skywalker',
@@ -27,15 +27,15 @@ const charactersById = {
   },
   3: {
     align: 'right',
-    color: '#fff',
-    fontColor: '#00f',
+    color: '#E5E5EC',
+    fontColor: '#00236D',
     image: 'r2.svg',
     name: 'R2-D2',
     sound: 'r2d2.mp3'
   },
   4: {
     align: 'right',
-    color: '#f00',
+    color: '#CE0C2C',
     fontColor: '#fff',
     image: 'vader.svg',
     name: 'Darth Vader',
@@ -43,7 +43,7 @@ const charactersById = {
   },
   10: {
     align: 'left',
-    color: '#00f',
+    color: '#2F67F8',
     fontColor: '#fff',
     image: 'obi-wan.svg',
     name: 'Obi-wan Kenobi',
