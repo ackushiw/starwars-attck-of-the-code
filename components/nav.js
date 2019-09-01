@@ -116,6 +116,7 @@ const Nav = ({ characters, isHome }) => (
         color: #fff;
         font-size: 13px;
         font-weight: 600;
+        text-transform: uppercase;
       }
 
       @media (min-width: 600px) {

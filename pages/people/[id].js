@@ -26,6 +26,9 @@ const Person = ({ data, id }) => {
   useEffect(() => {
     let isMounted = true
     if (!state.fetched) {
+      setState({
+        loading: true
+      })
       fetchFilms(data.films)
         .then(films => {
           if (isMounted) { setFilms(films) }
@@ -49,12 +52,14 @@ const Person = ({ data, id }) => {
         <title>{ data.name }</title>
       </Head>
       <h2>Movies</h2>
-      { state.fetched &&
-        <section className='grid-container'>
-          {
-            films.map(film => <FilmCard data={film} key={film.url} />)
-          }
-        </section>
+      { state.fetched
+        ? (
+          <section className='grid-container'>
+            {
+              films.map(film => <FilmCard data={film} key={film.url} />)
+            }
+          </section>
+        ) : state.loading ? <p>Loading movies...</p> : null
       }
       <style jsx>{`
       .grid-container {
