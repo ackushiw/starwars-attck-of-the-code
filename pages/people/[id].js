@@ -24,9 +24,12 @@ const Person = ({ data, id }) => {
   const [films, setFilms] = useState([])
 
   useEffect(() => {
+    let isMounted = true
     if (!state.fetched) {
       fetchFilms(data.films)
-        .then(setFilms)
+        .then(films => {
+          if (isMounted) { setFilms(films) }
+        })
         .catch(error => {
           console.error('fetchFilms', error)
         })
@@ -37,6 +40,7 @@ const Person = ({ data, id }) => {
           })
         )
     }
+    return () => { isMounted = false }
   }, [data.films])
 
   return (
