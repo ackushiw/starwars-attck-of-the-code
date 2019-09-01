@@ -1,16 +1,16 @@
 
-import axios from 'axios'
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { baseURL } from '../../core/swapi'
+import { fetchAndPersist } from '../../core'
 import FilmCard from '../../components/FilmCard'
 
 const fetchFilms = async (urls) =>
-  Promise.all(urls.map(axios.get))
+  Promise.all(urls.map(fetchAndPersist))
     .then(results => results
-      .map(res => ({
-        ...res.data,
-        timestamp: new Date(res.data.release_date).getTime()
+      .map(data => ({
+        ...data,
+        timestamp: new Date(data.release_date).getTime()
       }))
       .sort((a, b) => a.timestamp - b.timestamp)
     )
@@ -102,8 +102,7 @@ Person.getInitialProps = async ({ query }) => {
   }
 
   try {
-    const { data } = await axios.get(`${baseURL}/people/${id}`)
-
+    const data = await fetchAndPersist(`${baseURL}/people/${id}`)
     return {
       data,
       id

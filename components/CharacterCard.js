@@ -5,12 +5,12 @@ import swapi from '../core/swapi'
 const CharacterCard = ({ active, align, color, fontColor, id, image, name, url }) => {
   const cardStyle = {
     backgroundColor: color,
-    color: fontColor,
+    color: fontColor
   }
   const cardImageStyle = {
     backgroundImage: `url(/static/${image})`,
     backgroundPosition: `bottom ${align}`,
-    backgroundSize: 'contain',
+    backgroundSize: 'contain'
   }
   return (
     <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
