@@ -1,10 +1,10 @@
 const withOffline = require('next-offline')
 
 const nextConfig = {
-  exportPathMap: async function (defaultPathMap) {
-    console.log('default', defaultPathMap)
+  exportPathMap: async function () {
     return {
-      ...defaultPathMap,
+      '/': { page: '/'},
+      '/index': { page: '/index' },
       '/people/1': { page: '/people/[id]', query: { id: 1 } },
       '/people/3': { page: '/people/[id]', query: { id: 3 } },
       '/people/4': { page: '/people/[id]', query: { id: 4 } },

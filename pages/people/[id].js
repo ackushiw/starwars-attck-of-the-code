@@ -83,13 +83,24 @@ const Person = ({ data, id }) => {
 
 Person.getInitialProps = async ({ query }) => {
   const { id } = query
-  if (!id) return { data: {}, id: null }
+  if (!id) {
+    throw new Error('Unknown id')
+  }
 
-  const { data } = await axios.get(`${baseURL}/people/${id}`)
+  try {
+    const { data } = await axios.get(`${baseURL}/people/${id}`)
 
-  return {
-    data,
-    id
+    return {
+      data,
+      id
+    }
+  } catch (error) {
+    console.error(error)
+    return {
+      data: { films: [] },
+      error,
+      id
+    }
   }
 }
 
