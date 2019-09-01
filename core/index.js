@@ -8,8 +8,6 @@ export async function fetchAndPersist (url, force) {
   if (process.browser) {
     const json = await get(url)
     if (json) {
-      console.log('jdon found', json)
-
       data = JSON.parse(json)
       persisted = true
     }
