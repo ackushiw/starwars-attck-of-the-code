@@ -27,7 +27,6 @@ const Person = ({ data, id }) => {
   useEffect(() => {
     if (!state.fetched) {
       fetchFilms(data.films)
-        
         .then(setFilms)
         .catch(error => {
           console.error('fetchFilms', error)

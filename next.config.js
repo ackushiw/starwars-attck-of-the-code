@@ -9,6 +9,23 @@ const nextConfig = {
       '/people/4': { page: '/people/[id]', query: { id: 4 } },
       '/people/10': { page: '/people/[id]', query: { id: 10 } }
     }
+  },
+  workboxOpts: {
+    runtimeCaching: [
+      {
+        urlPattern: /.svg$/,
+        handler: 'CacheFirst'
+      },
+      {
+        urlPattern: /swapi/,
+        handler: 'NetworkFirst',
+        options: {
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      }
+    ]
   }
 }
 
