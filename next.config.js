@@ -14,15 +14,12 @@ const nextConfig = {
   workboxOpts: {
     runtimeCaching: [
       {
-        urlPattern: /.svg$/,
-        handler: 'CacheFirst'
-      },
-      {
-        urlPattern: /swapi/,
+        urlPattern: /^https?.*/,
         handler: 'NetworkFirst',
         options: {
-          cacheableResponse: {
-            statuses: [0, 200]
+          cacheName: 'offlineCache',
+          expiration: {
+            maxEntries: 200
           }
         }
       }
