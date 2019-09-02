@@ -11,6 +11,7 @@ const nextConfig = {
       '/people/10': { page: '/people/[id]', query: { id: 10 } }
     }
   },
+  exportTrailingSlash: true,
   workboxOpts: {
     runtimeCaching: [
       {
