@@ -15,8 +15,9 @@ const fetchFilms = async (urls) =>
       .sort((a, b) => a.timestamp - b.timestamp)
     )
 
-const Person = ({ data, id }) => {
+const Person = ({ data, error, id }) => {
   const [state, setState] = useState({
+    error,
     fetched: false,
     loading: true
   })
@@ -31,17 +32,25 @@ const Person = ({ data, id }) => {
       })
       fetchFilms(data.films)
         .then(films => {
-          if (isMounted) { setFilms(films) }
+          if (isMounted) { 
+            setFilms(films)
+            setState({
+              error: null,
+              fetched: true,
+              loading: false
+            })
+          }
         })
-        .catch(error => {
+        .catch(err => {
           console.error('fetchFilms', error)
+          if (isMounted) {
+            setState({
+              error: err,
+              fetched: true,
+              loading: false
+            })
+          }
         })
-        .finally(
-          setState({
-            loading: false,
-            fetched: true
-          })
-        )
     }
     return () => { isMounted = false }
   }, [data.films])
@@ -52,6 +61,7 @@ const Person = ({ data, id }) => {
         <title>{ data.name }</title>
       </Head>
       <h2>Movies</h2>
+      <pre>{ error && error.message }</pre>
       { state.fetched
         ? (
           <section className='grid-container'>
@@ -108,10 +118,7 @@ Person.getInitialProps = async ({ query }) => {
 
   try {
     const data = await fetchAndPersist(`${baseURL}/people/${id}`)
-    return {
-      data,
-      id
-    }
+    return { data, error: null, id }
   } catch (error) {
     console.error(error)
     return {
