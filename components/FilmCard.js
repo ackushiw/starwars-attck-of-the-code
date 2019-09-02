@@ -14,21 +14,22 @@ const FilmCard = ({ data }) => {
         <p className='caption'>{date.toLocaleDateString('en-US', dateOptions)}</p>
       </div>
       <style jsx>{`
-      .caption {
-        font-size: 0.8rem
-      }
-      .card-content {
-        padding: 1rem;
-      }
-      .film-card {
-        background-color: #333;
-        border: #999 2px solid;
-        border-radius: 5px;
-      }
-      h3 {
-        margin-bottom: 0;
-      }
-    `}</style>
+        .caption {
+          font-size: 0.8rem
+        }
+        .card-content {
+          padding: 1rem;
+        }
+        .film-card {
+          background-color: #333;
+          border: #999 2px solid;
+          border-radius: 5px;
+        }
+        h3 {
+          margin-bottom: 0;
+        }
+      `}
+      </style>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { baseURL } from '../../core/swapi'
@@ -32,7 +31,7 @@ const Person = ({ data, error, id }) => {
       })
       fetchFilms(data.films)
         .then(films => {
-          if (isMounted) { 
+          if (isMounted) {
             setFilms(films)
             setState({
               error: null,

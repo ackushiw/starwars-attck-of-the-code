@@ -127,8 +127,8 @@ const Nav = ({ characters, isHome }) => (
           min-height: 72px;
         }
       }
-
-    `}</style>
+    `}
+    </style>
   </nav>
 )
 
