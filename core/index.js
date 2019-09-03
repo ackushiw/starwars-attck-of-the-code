@@ -1,24 +1,24 @@
-import axios from 'axios'
 import { get, set } from 'idb-keyval'
+import fetch from 'isomorphic-unfetch'
 
-export async function fetchAndPersist (url, force) {
+export async function fetchAndPersist (url, force = false) {
   let data
-  let persisted
 
   if (process.browser) {
     const json = await get(url)
     if (json) {
       data = JSON.parse(json)
-      persisted = true
+      if (!force) {
+        return data
+      }
     }
   }
 
-  if (!data || force) {
-    const res = await axios.get(url)
-    data = res.data
-    if (process.browser && !persisted) {
-      set(url, JSON.stringify(data))
-    }
+  const res = await fetch(url)
+  data = await res.json()
+
+  if (process.browser && data) {
+    set(url, JSON.stringify(data))
   }
 
   return data

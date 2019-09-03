@@ -5,7 +5,7 @@ import { fetchAndPersist } from '../../core'
 import FilmCard from '../../components/FilmCard'
 
 const fetchFilms = async (urls) =>
-  Promise.all(urls.map(fetchAndPersist))
+  Promise.all(urls.map(url => fetchAndPersist(url)))
     .then(results => results
       .map(data => ({
         ...data,
