@@ -12,12 +12,10 @@ const nextConfig = {
     }
   },
   exportTrailingSlash: true,
+
   workboxOpts: {
+    cleanupOutdatedCaches: true,
     runtimeCaching: [
-      {
-        urlPattern: /.html$/,
-        handler: 'CacheFirst'
-      },
       {
         urlPattern: /api/,
         handler: 'CacheFirst',
