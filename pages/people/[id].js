@@ -79,8 +79,8 @@ const Person = ({ data, error, id }) => {
 
       .page {
         color: white;
-        margin-top: 156px;
-        padding: 0 1rem 2rem;
+        margin-top: 128px;
+        padding: 1rem 1rem 2rem;
       }
 
       h2 {
