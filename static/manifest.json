@@ -1,6 +1,7 @@
 {
     "name": "Attck",
     "short_name": "Attck",
+    "start_url": ".",
     "icons": [
         {
             "src": "/static/android-chrome-192x192.png",
