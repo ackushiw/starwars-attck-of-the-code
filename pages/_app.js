@@ -29,6 +29,11 @@ class AppShell extends App {
             font-size: 16px;
             margin: 0;
           }
+
+          .card-image svg {
+            height: 100%;
+            width: 100%;
+          }
         `}
         </style>
       </div>

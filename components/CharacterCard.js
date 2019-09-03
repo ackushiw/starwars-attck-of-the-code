@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 import swapi from '../core/swapi'
+import CharacterImage from './CharacterImage'
 
 const CharacterCard = ({
   active,
-  align,
   color,
   fontColor,
   id,
-  image,
   name,
   sound,
   url
@@ -16,11 +15,6 @@ const CharacterCard = ({
   const cardStyle = {
     backgroundColor: color,
     color: fontColor
-  }
-  const cardImageStyle = {
-    backgroundImage: `url(/static/${image})`,
-    backgroundPosition: `bottom ${align}`,
-    backgroundSize: 'contain'
   }
 
   const playSound = () => {
@@ -30,9 +24,11 @@ const CharacterCard = ({
   return (
     <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
       <a className='card' style={cardStyle} onClick={playSound}>
-        <div className='card-image' style={cardImageStyle} />
+        <div className='card-image'>
+          <CharacterImage imageId={id} />
+        </div>
         <div className='card-content'>
-          <h1>{ name }</h1>
+          <h1>{name}</h1>
         </div>
         <audio id={`sound-${id}`}>
           <source src={`/static/${sound}`} type='audio/mpeg' />
@@ -59,6 +55,7 @@ const CharacterCard = ({
             transition: transform 100ms ease;
             width: calc(100% - 2rem);
           }
+          
           a {
             text-decoration: none;
           }
