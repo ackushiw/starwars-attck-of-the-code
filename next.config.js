@@ -15,6 +15,10 @@ const nextConfig = {
   workboxOpts: {
     runtimeCaching: [
       {
+        urlPattern: /.html$/,
+        handler: 'CacheFirst'
+      },
+      {
         urlPattern: /api/,
         handler: 'CacheFirst',
         options: {

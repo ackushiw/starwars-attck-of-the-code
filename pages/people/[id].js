@@ -112,7 +112,7 @@ const Person = ({ data, error, id }) => {
 Person.getInitialProps = async ({ query }) => {
   const { id } = query
   if (!id) {
-    throw new Error('Unknown id')
+    throw new Error('No id')
   }
 
   try {
