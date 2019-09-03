@@ -22,7 +22,6 @@ const charactersById = {
     color: '#6BE044',
     fontColor: '#fff',
     id: 'luke',
-    image: 'luke.svg',
     name: 'Luke Skywalker',
     sound: 'x_wing_flyby.mp3'
   },
@@ -31,7 +30,6 @@ const charactersById = {
     color: '#E5E5EC',
     fontColor: '#00236D',
     id: 'r2',
-    image: 'r2.svg',
     name: 'R2-D2',
     sound: 'r2d2.mp3'
   },
@@ -40,7 +38,6 @@ const charactersById = {
     color: '#CE0C2C',
     fontColor: '#000',
     id: 'vader',
-    image: 'vader.svg',
     name: 'Darth Vader',
     sound: 'vader.mp3'
   },
@@ -49,7 +46,6 @@ const charactersById = {
     color: '#2F67F8',
     fontColor: '#fff',
     id: 'obi',
-    image: 'obi-wan.svg',
     name: 'Obi-wan Kenobi',
     sound: 'lightsaber.mp3'
   }
@@ -58,8 +54,7 @@ const charactersById = {
 export function getCharacterId (url) {
   const [num] = url.match(/\d+/)
   switch (num) {
-    case '1':
-      return 'luke'
+    case '1': return 'luke'
     case '3': return 'r2'
     case '4': return 'vader'
     case '10': return 'obi'
