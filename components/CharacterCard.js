@@ -23,7 +23,11 @@ const CharacterCard = ({
 
   return (
     <Link as={url.replace(swapi.baseURL, '')} href='/people/[id]'>
-      <a className='card' style={cardStyle} onClick={playSound}>
+      <a
+        className={active ? 'card active' : 'card'}
+        style={cardStyle}
+        onClick={playSound}
+      >
         <div className='card-image'>
           <CharacterImage imageId={id} />
         </div>
@@ -55,6 +59,9 @@ const CharacterCard = ({
             transition: transform 100ms ease;
             width: calc(100% - 2rem);
           }
+          .card.active .card-image {
+            transform: translateX(62%);
+          }
           
           a {
             text-decoration: none;
@@ -67,6 +74,9 @@ const CharacterCard = ({
           @media (min-width: 600px) {
             h1 {
               font-size: 2rem;
+            }
+            .card.active .card-image {
+              transform: translateX(400px);
             }
           }
         `}
