@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { baseURL } from '../../core/swapi'
 import { fetchAndPersist } from '../../core'
 import FilmCard from '../../components/FilmCard'
+import Head from '../../components/Head'
 
 const fetchFilms = async (urls) =>
   Promise.all(urls.map(url => fetchAndPersist(url)))
@@ -56,9 +56,7 @@ const Person = ({ data, error, id }) => {
 
   return (
     <div className='page'>
-      <Head>
-        <title>{ data.name }</title>
-      </Head>
+      <Head title={data.name} />
       <h2>Movies</h2>
       <pre>{ error && error.message }</pre>
       { state.fetched
@@ -116,7 +114,7 @@ Person.getInitialProps = async ({ query }) => {
   }
 
   try {
-    const data = await fetchAndPersist(`${baseURL}/people/${id}`)
+    const data = await fetchAndPersist(`${baseURL}/people/${id}/`)
     return { data, error: null, id }
   } catch (error) {
     console.error(error)

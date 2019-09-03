@@ -63,7 +63,7 @@ export function getCharacterId (url) {
     case '3': return 'r2'
     case '4': return 'vader'
     case '10': return 'obi'
-    default: 'unknown'
+    default: return 'unknown'
   }
 }
 
