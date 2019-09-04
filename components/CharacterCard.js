@@ -1,17 +1,9 @@
 import Link from 'next/link'
-import React from 'react'
+
 import swapi from '../core/swapi'
 import CharacterImage from './CharacterImage'
 
-const CharacterCard = ({
-  active,
-  color,
-  fontColor,
-  id,
-  name,
-  sound,
-  url
-}) => {
+const CharacterCard = ({ active, color, fontColor, id, name, sound, url }) => {
   const cardStyle = {
     backgroundColor: color,
     color: fontColor

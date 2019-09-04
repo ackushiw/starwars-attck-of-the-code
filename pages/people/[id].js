@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { baseURL } from '../../core/swapi'
+import { useState, useEffect } from 'react'
+
 import { fetchAndPersist } from '../../core'
+import { baseURL } from '../../core/swapi'
 import FilmCard from '../../components/FilmCard'
 import Head from '../../components/Head'
 

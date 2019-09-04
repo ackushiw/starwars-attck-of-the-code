@@ -1,5 +1,3 @@
-import React from 'react'
-
 const characterImages = {
   luke: {
     height: 1036,

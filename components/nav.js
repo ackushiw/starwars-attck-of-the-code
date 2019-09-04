@@ -1,17 +1,17 @@
-import React from 'react'
 import Link from 'next/link'
+
 import CharacterCard from './CharacterCard'
+
+const getSectionClass = (isHome, active) =>
+  isHome ? 'home' : active ? 'active' : 'hidden'
 
 const Nav = ({ characters, isHome }) => (
   <nav className={isHome ? 'expand' : 'top'}>
-
     <div className={isHome ? 'top-bar' : 'top-bar show'}>
       <ul>
         <li>
           <Link href='/'>
-            <a>
-              Home
-            </a>
+            <a>Home</a>
           </Link>
         </li>
       </ul>
@@ -21,11 +21,7 @@ const Nav = ({ characters, isHome }) => (
       {
         characters.map(character =>
           <section
-            className={
-              isHome
-                ? 'home' : character.active
-                  ? 'active' : 'hidden'
-            }
+            className={getSectionClass(isHome, character.active)}
             key={character.id}
           >
             <CharacterCard {...character} />

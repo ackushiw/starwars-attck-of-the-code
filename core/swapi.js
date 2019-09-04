@@ -62,9 +62,7 @@ export function getCharacterId (url) {
   }
 }
 
-export const getCharacterUi = (url) => {
-  return charactersById[getCharacterId(url)]
-}
+export const getCharacterUi = (url) => charactersById[getCharacterId(url)]
 
 export default {
   baseURL,
